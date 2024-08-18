@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <img src="img/logo.png" alt="Logo" class="logo">
+        <h1>Currency Converter</h1>
+    </header>
+
+    <main>
+        <section class="calculator-container">
+            <h2>Convert Currency</h2>
+            <form id="currencyForm">
+                <div class="form-group">
+                    <label for="amount">Amount:</label>
+                    <input type="number" id="amount" name="amount" required>
+                </div>
+                <div class="form-group">
+                    <label for="fromCurrency">From:</label>
+                    <select id="fromCurrency" name="fromCurrency" required>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="toCurrency">To:</label>
+                    <select id="toCurrency" name="toCurrency" required>
+                        <option value="INR">INR</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                    </select>
+                </div>
+                <button type="submit">Convert</button>
+            </form>
+            <div id="currencyResult" class="result"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Calculator Website</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

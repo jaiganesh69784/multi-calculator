@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compound Interest Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Compound Interest Calculator</h1>
+    </header>
+    <main class="calculator-container">
+        <form id="compoundInterestForm">
+            <div class="form-group">
+                <label for="principalCI">Principal (₹):</label>
+                <input type="number" id="principalCI" required>
+            </div>
+            <div class="form-group">
+                <label for="rateCI">Annual Interest Rate (%):</label>
+                <input type="number" id="rateCI" required>
+            </div>
+            <div class="form-group">
+                <label for="timeCI">Time (years):</label>
+                <input type="number" id="timeCI" required>
+            </div>
+            <div class="form-group">
+                <label for="nCI">Number of Times Interest Applied Per Year:</label>
+                <input type="number" id="nCI" required>
+            </div>
+            <button type="submit">Calculate Interest</button>
+            <div class="result" id="compoundInterestResult"></div>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Calculator Hub</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

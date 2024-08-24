@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const rate = parseFloat(document.getElementById('rate').value) / 100 / 12;
             const time = parseFloat(document.getElementById('time').value) * 12;
             const emi = (principal * rate * Math.pow(1 + rate, time)) / (Math.pow(1 + rate, time) - 1);
-            document.getElementById('loanResult').textContent = `Your EMI is ₹${emi.toFixed(2)}`;
+            document.getElementById('loanResult').textContent = `Your EMI is ${emi.toFixed(2)}`;
         });
     }
 
@@ -55,10 +55,9 @@ document.addEventListener('DOMContentLoaded', function() {
         tipForm.addEventListener('submit', function(event) {
             event.preventDefault();
             const billAmount = parseFloat(document.getElementById('billAmount').value);
-            const tipPercentage = parseFloat(document.getElementById('tipPercentage').value);
-            const tipAmount = (billAmount * tipPercentage) / 100;
-            const totalAmount = billAmount + tipAmount;
-            document.getElementById('tipResult').textContent = `Tip: ₹${tipAmount.toFixed(2)}, Total: ₹${totalAmount.toFixed(2)}`;
+            const tipPercent = parseFloat(document.getElementById('tipPercent').value) / 100;
+            const tipAmount = billAmount * tipPercent;
+            document.getElementById('tipResult').textContent = `Tip Amount: ${tipAmount.toFixed(2)}`;
         });
     }
 
@@ -68,25 +67,25 @@ document.addEventListener('DOMContentLoaded', function() {
         discountForm.addEventListener('submit', function(event) {
             event.preventDefault();
             const originalPrice = parseFloat(document.getElementById('originalPrice').value);
-            const discountPercentage = parseFloat(document.getElementById('discountPercentage').value);
-            const discountAmount = (originalPrice * discountPercentage) / 100;
+            const discountPercent = parseFloat(document.getElementById('discountPercent').value) / 100;
+            const discountAmount = originalPrice * discountPercent;
             const finalPrice = originalPrice - discountAmount;
-            document.getElementById('discountResult').textContent = `Discount: ₹${discountAmount.toFixed(2)}, Final Price: ₹${finalPrice.toFixed(2)}`;
+            document.getElementById('discountResult').textContent = `Final Price: ${finalPrice.toFixed(2)}`;
         });
     }
 
     // Compound Interest Calculator
-    const compoundInterestForm = document.getElementById('compoundInterestForm');
-    if (compoundInterestForm) {
-        compoundInterestForm.addEventListener('submit', function(event) {
+    const compoundForm = document.getElementById('compoundForm');
+    if (compoundForm) {
+        compoundForm.addEventListener('submit', function(event) {
             event.preventDefault();
-            const principal = parseFloat(document.getElementById('principalCI').value);
-            const rate = parseFloat(document.getElementById('rateCI').value) / 100;
-            const time = parseFloat(document.getElementById('timeCI').value);
-            const n = parseFloat(document.getElementById('nCI').value);
-            const amount = principal * Math.pow((1 + rate / n), n * time);
+            const principal = parseFloat(document.getElementById('compoundPrincipal').value);
+            const rate = parseFloat(document.getElementById('compoundRate').value) / 100;
+            const time = parseFloat(document.getElementById('compoundTime').value);
+            const n = parseFloat(document.getElementById('compoundN').value);
+            const amount = principal * Math.pow(1 + rate / n, n * time);
             const interest = amount - principal;
-            document.getElementById('compoundInterestResult').textContent = `Interest: ₹${interest.toFixed(2)}, Total Amount: ₹${amount.toFixed(2)}`;
+            document.getElementById('compoundResult').textContent = `Compound Interest: ${interest.toFixed(2)}`;
         });
     }
 
@@ -95,31 +94,29 @@ document.addEventListener('DOMContentLoaded', function() {
     if (calorieForm) {
         calorieForm.addEventListener('submit', function(event) {
             event.preventDefault();
-            const weight = parseFloat(document.getElementById('weightCal').value);
-            const height = parseFloat(document.getElementById('heightCal').value);
-            const age = parseFloat(document.getElementById('ageCal').value);
-            const gender = document.getElementById('genderCal').value;
+            const weight = parseFloat(document.getElementById('calorieWeight').value);
+            const height = parseFloat(document.getElementById('calorieHeight').value);
+            const age = parseFloat(document.getElementById('calorieAge').value);
+            const gender = document.querySelector('input[name="gender"]:checked').value;
             let bmr;
             if (gender === 'male') {
-                bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+                bmr = 88.36 + (13.4 * weight) + (4.8 * height) - (5.7 * age);
             } else {
-                bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+                bmr = 447.6 + (9.2 * weight) + (3.1 * height) - (4.3 * age);
             }
-            document.getElementById('calorieResult').textContent = `Your BMR is ${bmr.toFixed(2)} calories/day`;
+            document.getElementById('calorieResult').textContent = `Your daily calorie needs are ${bmr.toFixed(2)} calories.`;
         });
     }
 
     // Time Zone Converter
-    const timeZoneForm = document.getElementById('timeZoneForm');
-    if (timeZoneForm) {
-        timeZoneForm.addEventListener('submit', function(event) {
+    const timeForm = document.getElementById('timeForm');
+    if (timeForm) {
+        timeForm.addEventListener('submit', function(event) {
             event.preventDefault();
-            const time = document.getElementById('time').value;
-            const fromTimeZone = document.getElementById('fromTimeZone').value;
-            const toTimeZone = document.getElementById('toTimeZone').value;
-            // Example conversion logic (mocked)
-            const convertedTime = `${time} converted from ${fromTimeZone} to ${toTimeZone}`;
-            document.getElementById('timeZoneResult').textContent = convertedTime;
+            // Mock timezone conversion logic for demonstration
+            const localTime = document.getElementById('localTime').value;
+            const timezone = document.getElementById('timezone').value;
+            document.getElementById('timeResult').textContent = `Converted Time: ${localTime} in ${timezone}`;
         });
     }
 });
